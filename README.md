@@ -14,11 +14,8 @@ issues.
 gradle
 
 ```groovy
-repositories {
-    jcenter()
-}
 dependencies {
-    implementation 'com.codeheadsystems.terrapin:statemachine:1.0'
+    implementation 'com.codeheadsystems.statemachine:1.0.0'
 }
 ```
 
