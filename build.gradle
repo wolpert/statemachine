@@ -40,7 +40,7 @@ repositories {
     maven { url "https://s3-us-west-2.amazonaws.com/dynamodb-local/release/" }
 }
 group 'com.codeheadsystems'
-version '1.0.0'
+version '1.0.1-SNAPSHOT'
 ext {
     appName = "statemachine"
 }
