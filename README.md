@@ -9,6 +9,8 @@ definitions and use them for stateful objects. Pre/Post hooks available for
 transitions as well as a pluggable locking model to help resolve thread-safety
 issues.
 
+Java8 Compatible.
+
 ## Release
 
 gradle
