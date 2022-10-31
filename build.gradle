@@ -191,7 +191,7 @@ dependencies {
 
 
     // Use JUnit Jupiter Engine for testing.
-    testImplementation "com.codeheadsystems:codehead-test:1.0.1"
+    testImplementation "com.codeheadsystems:codehead-test:1.0.3"
 
     testImplementation('ch.qos.logback:logback-classic:1.4.4')
     testImplementation('ch.qos.logback:logback-core:1.4.4')
