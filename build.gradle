@@ -173,32 +173,32 @@ javadoc {
     }
 }
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.4")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.13.4")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.4")
-    implementation("com.google.guava:guava:31.1-jre")
-    implementation("commons-io:commons-io:2.11.0")
-    implementation("io.dropwizard.metrics:metrics-core:4.2.12")
+    implementation(libs.jackson.core)
+    implementation(libs.jackson.databind)
+    implementation(libs.jackson.annotations)
+    implementation(libs.jackson.datatype.jdk8)
+    implementation(libs.guava)
+    implementation(libs.commons.io)
+    implementation(libs.metrics.core)
     implementation("javax.inject:javax.inject:1")
-    implementation('org.slf4j:slf4j-api:2.0.3')
+    implementation(libs.slf4j.api)
 
-    implementation("org.immutables:value-annotations:2.9.2")
-    annotationProcessor("org.immutables:value:2.9.2")
+    implementation(libs.immutables.value.annotations)
+    annotationProcessor(libs.immutables.value)
 
-    implementation('com.google.dagger:dagger:2.44')
-    annotationProcessor('com.google.dagger:dagger-compiler:2.44')
+    implementation(libs.dagger)
+    annotationProcessor(libs.dagger.compiler)
 
 
     // Use JUnit Jupiter Engine for testing.
     testImplementation "com.codeheadsystems:codehead-test:1.0.3"
 
-    testImplementation('ch.qos.logback:logback-classic:1.4.4')
-    testImplementation('ch.qos.logback:logback-core:1.4.4')
-    testImplementation("org.assertj:assertj-core:3.23.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.8.0")
-    testImplementation("org.mockito:mockito-core:4.8.0")
+    testImplementation(libs.logback.classic)
+    testImplementation(libs.logback.core)
+    testImplementation(libs.assertj.core)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
+    testImplementation(libs.mockito.junit.jupiter)
+    testImplementation(libs.mockito.core)
 }
