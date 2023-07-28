@@ -16,12 +16,26 @@
 
 package com.codeheadsystems.statemachine.exceptions;
 
+/**
+ * The type Target exception.
+ */
 public class TargetException extends RuntimeException {
 
+  /**
+   * Instantiates a new Target exception.
+   *
+   * @param message   the message
+   * @param throwable the throwable
+   */
   public TargetException(final String message, final Throwable throwable) {
     super(message, throwable);
   }
 
+  /**
+   * Instantiates a new Target exception.
+   *
+   * @param message the message
+   */
   public TargetException(final String message) {
     super(message);
   }

@@ -40,9 +40,15 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class StateMachineFactory {
 
+  /**
+   * The constant VERSION.
+   */
   protected static final Long VERSION = 1L;
   private static final Logger log = LoggerFactory.getLogger(StateMachineFactory.class);
 
+  /**
+   * Instantiates a new State machine factory.
+   */
   @Inject
   public StateMachineFactory() {
     log.debug("StateMachineFactory()");
@@ -63,6 +69,13 @@ public class StateMachineFactory {
         .build();
   }
 
+  /**
+   * Add initial state state machine.
+   *
+   * @param stateMachine the state machine
+   * @param initialState the initial state
+   * @return the state machine
+   */
   public StateMachine addInitialState(final StateMachine stateMachine, final String initialState) {
     log.debug("addInitialState({},{})", stateMachine.identifier(), initialState);
     if (is(stateMachine.initialState(), initialState)) {
@@ -73,6 +86,15 @@ public class StateMachineFactory {
         .withVersion(stateMachine.version() + 1);
   }
 
+  /**
+   * Add transition state machine.
+   *
+   * @param stateMachine the state machine
+   * @param fromState    the from state
+   * @param transition   the transition
+   * @param toState      the to state
+   * @return the state machine
+   */
   public StateMachine addTransition(final StateMachine stateMachine,
                                     final String fromState,
                                     final String transition,
@@ -94,6 +116,14 @@ public class StateMachineFactory {
     }
   }
 
+  /**
+   * Add transition state machine.
+   *
+   * @param stateMachine the state machine
+   * @param fromState    the from state
+   * @param transition   the transition
+   * @return the state machine
+   */
   public StateMachine addTransition(final StateMachine stateMachine,
                                     final State fromState,
                                     final Transition transition) {
@@ -111,6 +141,13 @@ public class StateMachineFactory {
     }
   }
 
+  /**
+   * Add state state machine.
+   *
+   * @param stateMachine the state machine
+   * @param state        the state
+   * @return the state machine
+   */
   public StateMachine addState(final StateMachine stateMachine,
                                final State state) {
     log.debug("addState({},{})", stateMachine, state);
@@ -122,6 +159,13 @@ public class StateMachineFactory {
     }
   }
 
+  /**
+   * Add state state machine.
+   *
+   * @param stateMachine the state machine
+   * @param name         the name
+   * @return the state machine
+   */
   public StateMachine addState(final StateMachine stateMachine,
                                final String name) {
     log.debug("addState({},{})", stateMachine, name);
@@ -134,6 +178,12 @@ public class StateMachineFactory {
     }
   }
 
+  /**
+   * Is valid boolean.
+   *
+   * @param stateMachine the state machine
+   * @return the boolean
+   */
   public boolean isValid(final StateMachine stateMachine) {
     // Currently, only checks that the state machine's transitions all have states in the state machine.
     final boolean allStatesDefined = stateMachine.states().values().stream()

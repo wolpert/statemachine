@@ -31,9 +31,19 @@ import org.immutables.value.Value;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public interface Transition {
 
+  /**
+   * Name string.
+   *
+   * @return the string
+   */
   @JsonProperty("name")
   String name();
 
+  /**
+   * Next state string.
+   *
+   * @return the string
+   */
   @JsonProperty("nextState")
   String nextState();
 

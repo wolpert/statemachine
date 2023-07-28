@@ -18,8 +18,17 @@ package com.codeheadsystems.statemachine.exceptions;
 
 import com.codeheadsystems.statemachine.model.StateMachine;
 
+/**
+ * The type Bad state machine exception.
+ */
 public class BadStateMachineException extends StateMachineException {
 
+  /**
+   * Instantiates a new Bad state machine exception.
+   *
+   * @param stateMachine the state machine
+   * @param message      the message
+   */
   public BadStateMachineException(final StateMachine stateMachine, final String message) {
     super(stateMachine, message);
   }

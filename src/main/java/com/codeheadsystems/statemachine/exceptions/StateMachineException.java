@@ -18,14 +18,30 @@ package com.codeheadsystems.statemachine.exceptions;
 
 import com.codeheadsystems.statemachine.model.StateMachine;
 
+/**
+ * The type State machine exception.
+ */
 public class StateMachineException extends RuntimeException {
 
   private static final String MESSAGE = "[%s] %s";
 
+  /**
+   * Instantiates a new State machine exception.
+   *
+   * @param stateMachine the state machine
+   * @param message      the message
+   */
   public StateMachineException(final StateMachine stateMachine, final String message) {
     super(String.format(MESSAGE, stateMachine.identifier(), message));
   }
 
+  /**
+   * Instantiates a new State machine exception.
+   *
+   * @param stateMachine the state machine
+   * @param message      the message
+   * @param throwable    the throwable
+   */
   public StateMachineException(final StateMachine stateMachine, final String message, final Throwable throwable) {
     super(String.format(MESSAGE, stateMachine.identifier(), message), throwable);
   }

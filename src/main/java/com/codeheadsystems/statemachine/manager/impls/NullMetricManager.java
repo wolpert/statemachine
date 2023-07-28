@@ -27,6 +27,9 @@ import javax.inject.Singleton;
 @Singleton
 public class NullMetricManager implements MetricManager {
 
+  /**
+   * Instantiates a new Null metric manager.
+   */
   @Inject
   public NullMetricManager() {
 

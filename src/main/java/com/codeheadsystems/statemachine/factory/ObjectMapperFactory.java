@@ -27,11 +27,19 @@ import javax.inject.Singleton;
 @Singleton
 public class ObjectMapperFactory {
 
+  /**
+   * Instantiates a new Object mapper factory.
+   */
   @Inject
   public ObjectMapperFactory() {
 
   }
 
+  /**
+   * Object mapper object mapper.
+   *
+   * @return the object mapper
+   */
   public ObjectMapper objectMapper() {
     return new ObjectMapper()
         .registerModule(new Jdk8Module());

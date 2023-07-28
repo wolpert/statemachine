@@ -41,6 +41,13 @@ public class TransitionManager {
   private final MetricManager metricManager;
   private final LockManager lockManager;
 
+  /**
+   * Instantiates a new Transition manager.
+   *
+   * @param invocationManager the invocation manager
+   * @param metricManager     the metric manager
+   * @param lockManager       the lock manager
+   */
   @Inject
   public TransitionManager(final InvocationManager invocationManager,
                            final MetricManager metricManager,
@@ -55,11 +62,11 @@ public class TransitionManager {
    * Transitions the state of the object. This method will handle the pre and post states for the transition
    * as they come up.
    *
+   * @param <T>            type of object so we can return it back.
    * @param stateMachine   that owns the transition.
-   * @param transitionName that we are going to call
    * @param model          that descriptions how to execute the request.
    * @param object         that has the state.
-   * @param <T>            type of object so we can return it back.
+   * @param transitionName that we are going to call
    * @return the object post transition.
    */
   public <T> T transition(final StateMachine stateMachine,
@@ -98,10 +105,10 @@ public class TransitionManager {
    * Transitions the state of the object. This method will handle the pre and post states for the transition
    * as they come up.
    *
-   * @param activeStateMachine that owns the transition and model.
-   * @param transitionName     that we are going to call
-   * @param object             that has the state.
    * @param <T>                type of object so we can return it back.
+   * @param activeStateMachine that owns the transition and model.
+   * @param object             that has the state.
+   * @param transitionName     that we are going to call
    * @return the object post transition.
    */
   public <T> T transition(final ActiveStateMachine<T> activeStateMachine,
@@ -113,9 +120,9 @@ public class TransitionManager {
   /**
    * Returns a set of transitions available for the target object in its current state.
    *
+   * @param <T>                type of object.
    * @param activeStateMachine activeStateMachine for the target.
    * @param targetObject       object with the state.
-   * @param <T>                type of object.
    * @return set of possible transitions.
    */
   public <T> Set<String> transitions(final ActiveStateMachine<T> activeStateMachine,

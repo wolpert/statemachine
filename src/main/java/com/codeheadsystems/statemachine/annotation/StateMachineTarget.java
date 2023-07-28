@@ -27,5 +27,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface StateMachineTarget {
+  /**
+   * Value string.
+   *
+   * @return the string
+   */
   String value();
 }

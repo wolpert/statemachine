@@ -20,12 +20,24 @@ import org.immutables.value.Value;
 
 /**
  * Purpose: Holds onto an active StateMachine, with the invocation model for its target.  Not serializable.
+ *
+ * @param <T> the type parameter
  */
 @Value.Immutable
 public interface ActiveStateMachine<T> {
 
+  /**
+   * State machine state machine.
+   *
+   * @return the state machine
+   */
   StateMachine stateMachine();
 
+  /**
+   * Invocation model invocation model.
+   *
+   * @return the invocation model
+   */
   InvocationModel<T> invocationModel();
 
 }

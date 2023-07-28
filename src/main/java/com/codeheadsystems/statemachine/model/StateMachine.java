@@ -37,7 +37,7 @@ public abstract class StateMachine {
   /**
    * Represents the name in a meaningful way to the calling application.
    *
-   * @return name.
+   * @return name. string
    */
   @JsonProperty("name")
   public abstract String name();
@@ -45,7 +45,7 @@ public abstract class StateMachine {
   /**
    * The identifier for this version. New instances will always have new identifiers. (Specific to the VM)
    *
-   * @return id.
+   * @return id. string
    */
   @JsonProperty("id")
   public abstract String id();
@@ -53,27 +53,56 @@ public abstract class StateMachine {
   /**
    * Version of the state machine. Adding states or transitions will up the version.
    *
-   * @return version.
+   * @return version. long
    */
   @JsonProperty("version")
   public abstract Long version();
 
+  /**
+   * States map.
+   *
+   * @return the map
+   */
   @JsonProperty("states")
   public abstract Map<String, State> states();
 
+  /**
+   * Initial state optional.
+   *
+   * @return the optional
+   */
   @JsonProperty("initialState")
   public abstract Optional<String> initialState();
 
+  /**
+   * Has state boolean.
+   *
+   * @param state the state
+   * @return the boolean
+   */
   @JsonIgnore
   public boolean hasState(final State state) {
     return hasState(state.name());
   }
 
+  /**
+   * Has state boolean.
+   *
+   * @param name the name
+   * @return the boolean
+   */
   @JsonIgnore
   public boolean hasState(final String name) {
     return states().containsKey(name);
   }
 
+  /**
+   * Next state optional.
+   *
+   * @param stateName      the state name
+   * @param transitionName the transition name
+   * @return the optional
+   */
   @JsonIgnore
   public Optional<String> nextState(final String stateName, final String transitionName) {
     return Optional.of(stateName)
@@ -83,6 +112,11 @@ public abstract class StateMachine {
         .map(State::name);
   }
 
+  /**
+   * Identifier string.
+   *
+   * @return the string
+   */
   @JsonIgnore
   @Value.Derived
   public String identifier() {

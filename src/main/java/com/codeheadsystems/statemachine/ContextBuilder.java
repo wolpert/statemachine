@@ -52,7 +52,7 @@ public class ContextBuilder {
    * Add all of the global pending transition hooks to the context.
    *
    * @param set of hooks.
-   * @return builder.
+   * @return builder. context builder
    */
   public ContextBuilder pendingTransitions(final Set<Hook.PendingTransition> set) {
     pendingTransitionsBuilder.addAll(set);
@@ -63,7 +63,7 @@ public class ContextBuilder {
    * Add all of the global post transition hooks to the context.
    *
    * @param set of hooks.
-   * @return builder.
+   * @return builder. context builder
    */
   public ContextBuilder postTransitions(final Set<Hook.PostTransition> set) {
     postTransitionsBuilder.addAll(set);
@@ -74,7 +74,7 @@ public class ContextBuilder {
    * Add in your own lock manager
    *
    * @param lockManager to use.
-   * @return builder.
+   * @return builder. context builder
    */
   public ContextBuilder lockManager(final LockManager lockManager) {
     this.lockManager = lockManager;
@@ -85,7 +85,7 @@ public class ContextBuilder {
    * Add in your own metric registry if you want. This will use the default metric manager.
    *
    * @param metricRegistry if you have a common one.
-   * @return builder.
+   * @return builder. context builder
    */
   public ContextBuilder metricManager(final MetricRegistry metricRegistry) {
     this.metricRegistry = metricRegistry;
@@ -96,13 +96,18 @@ public class ContextBuilder {
    * Add in your own metric manager if you want.
    *
    * @param metricManager if you have  one.
-   * @return builder.
+   * @return builder. context builder
    */
   public ContextBuilder metricManager(final MetricManager metricManager) {
     this.metricManager = metricManager;
     return this;
   }
 
+  /**
+   * Build context.
+   *
+   * @return the context
+   */
   public Context build() {
     log.info("[ContextBuilder] build()");
     final MetricManager resolvedMetricManager = resolveMetricManager();
@@ -126,14 +131,25 @@ public class ContextBuilder {
     }
   }
 
+  /**
+   * The interface Context component.
+   */
   @Singleton
   @Component(modules = {StateMachineModules.class})
   public interface ContextComponent {
 
+    /**
+     * Context context.
+     *
+     * @return the context
+     */
     Context context();
 
   }
 
+  /**
+   * The type State machine modules.
+   */
   @Module
   public static class StateMachineModules {
 
@@ -142,6 +158,14 @@ public class ContextBuilder {
     private final Set<Hook.PendingTransition> pendingTransitions;
     private final Set<Hook.PostTransition> postTransitions;
 
+    /**
+     * Instantiates a new State machine modules.
+     *
+     * @param metricManager      the metric manager
+     * @param lockManager        the lock manager
+     * @param pendingTransitions the pending transitions
+     * @param postTransitions    the post transitions
+     */
     public StateMachineModules(final MetricManager metricManager,
                                final LockManager lockManager,
                                final Set<Hook.PendingTransition> pendingTransitions,
@@ -152,6 +176,11 @@ public class ContextBuilder {
       this.postTransitions = postTransitions;
     }
 
+    /**
+     * Pending transitions set.
+     *
+     * @return the set
+     */
     @Provides
     @Singleton
     @Named("PendingTransition")
@@ -159,6 +188,11 @@ public class ContextBuilder {
       return pendingTransitions;
     }
 
+    /**
+     * Post transitions set.
+     *
+     * @return the set
+     */
     @Provides
     @Singleton
     @Named("PostTransition")
@@ -166,6 +200,11 @@ public class ContextBuilder {
       return postTransitions;
     }
 
+    /**
+     * Lock manager lock manager.
+     *
+     * @return the lock manager
+     */
     @Provides
     @Singleton
     public LockManager lockManager() {
@@ -176,6 +215,11 @@ public class ContextBuilder {
       }
     }
 
+    /**
+     * Metric manager metric manager.
+     *
+     * @return the metric manager
+     */
     @Provides
     @Singleton
     public MetricManager metricManager() {
@@ -186,6 +230,12 @@ public class ContextBuilder {
       }
     }
 
+    /**
+     * Object mapper object mapper.
+     *
+     * @param factory the factory
+     * @return the object mapper
+     */
     @Provides
     @Singleton
     public ObjectMapper objectMapper(final ObjectMapperFactory factory) {

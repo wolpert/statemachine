@@ -33,6 +33,11 @@ public class InvocationManager {
 
   private final MetricManager metricManager;
 
+  /**
+   * Instantiates a new Invocation manager.
+   *
+   * @param metricManager the metric manager
+   */
   @Inject
   public InvocationManager(final MetricManager metricManager) {
     this.metricManager = metricManager;
@@ -41,10 +46,10 @@ public class InvocationManager {
   /**
    * Sets the string value in the object.
    *
+   * @param <T>    type of object.
    * @param model  that has the methods.
    * @param target object we are setting the methods for.
    * @param value  we want.
-   * @param <T>    type of object.
    */
   public <T> void set(final InvocationModel<T> model,
                       final T target,
@@ -56,9 +61,10 @@ public class InvocationManager {
   /**
    * Gets the string value in the object. Can be null.
    *
+   * @param <T>    type of object.
    * @param model  that has the methods.
    * @param target object we are getting the methods for.
-   * @param <T>    type of object.
+   * @return the string
    */
   public <T> String get(final InvocationModel<T> model,
                         final T target) {

@@ -31,6 +31,9 @@ import javax.inject.Singleton;
 @Deprecated
 public class NaiveLockManager implements LockManager {
 
+  /**
+   * Instantiates a new Naive lock manager.
+   */
   @Inject
   public NaiveLockManager() {
 

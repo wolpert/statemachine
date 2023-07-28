@@ -23,6 +23,8 @@ import org.immutables.value.Value;
 
 /**
  * Provides details for an object's invocation. Not serializable.
+ *
+ * @param <T> the type parameter
  */
 @Value.Immutable
 public interface InvocationModel<T> {
@@ -30,28 +32,28 @@ public interface InvocationModel<T> {
   /**
    * Provides the property name of the object we want to manage.
    *
-   * @return string.
+   * @return string. string
    */
   String propertyName();
 
   /**
    * The class the object is good for.
    *
-   * @return class.
+   * @return class. class
    */
   Class<T> targetClass();
 
   /**
    * A method to get the property from the object.
    *
-   * @return method.
+   * @return method. method
    */
   Method retrieveMethod();
 
   /**
    * A method to set the property in the object.
    *
-   * @return method.
+   * @return method. method
    */
   Method updateMethod();
 
@@ -69,11 +71,21 @@ public interface InvocationModel<T> {
    */
   Set<Hook.PostTransition> postTransitionHooks();
 
+  /**
+   * Retrieve method signature string.
+   *
+   * @return the string
+   */
   @Value.Derived
   default String retrieveMethodSignature() {
     return targetClass().getCanonicalName() + "." + retrieveMethod().getName();
   }
 
+  /**
+   * Update method signature string.
+   *
+   * @return the string
+   */
   @Value.Derived
   default String updateMethodSignature() {
     return targetClass().getCanonicalName() + "," + updateMethod().getName();

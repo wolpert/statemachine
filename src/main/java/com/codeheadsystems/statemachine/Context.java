@@ -74,6 +74,15 @@ public class Context {
   private final MetricManager metricManager;
   private final Map<Class<?>, ActiveStateMachine<?>> stateMachineMap;
 
+  /**
+   * Instantiates a new Context.
+   *
+   * @param stateMachineManager      the state machine manager
+   * @param transitionManager        the transition manager
+   * @param invocationModelConverter the invocation model converter
+   * @param invocationManager        the invocation manager
+   * @param metricManager            the metric manager
+   */
   @Inject
   Context(final StateMachineManager stateMachineManager,
           final TransitionManager transitionManager,
@@ -106,8 +115,8 @@ public class Context {
    * class for a given state machine. Still will use annotations on the class for finding the
    * correct field that holds onto the state.
    *
-   * @param targetClass the state machine should apply for. (Ignores inheritance patterns)
    * @param <T>         type of object.
+   * @param targetClass the state machine should apply for. (Ignores inheritance patterns)
    */
   public <T> void register(final Class<T> targetClass) {
     final StateMachine stateMachine = stateMachineManager.generateFromAnnotation(targetClass)
@@ -120,9 +129,9 @@ public class Context {
    * class for a given state machine. Still will use annotations on the class for finding the
    * correct field that holds onto the state.
    *
+   * @param <T>          type of object.
    * @param targetClass  the state machine should apply for. (Ignores inheritance patterns)
    * @param stateMachine we are using for the class.
-   * @param <T>          type of object.
    */
   public <T> void register(final Class<T> targetClass, final StateMachine stateMachine) {
     log.debug("[{}] register({},{})", id, targetClass.getCanonicalName(), stateMachine);
@@ -144,8 +153,8 @@ public class Context {
   /**
    * Removes from the context the target class so we won't manage any transitions of those anymore.
    *
-   * @param targetClass to deregister.
    * @param <T>         the type.
+   * @param targetClass to deregister.
    */
   public <T> void deregister(final Class<T> targetClass) {
     log.debug("[{}] deregister({})", id, targetClass.getCanonicalName());
@@ -161,8 +170,8 @@ public class Context {
   /**
    * Checks to see if this class is registered.
    *
-   * @param targetClass to check.
    * @param <T>         type.
+   * @param targetClass to check.
    * @return true or false.
    */
   public <T> boolean isRegistered(final Class<T> targetClass) {
@@ -174,9 +183,9 @@ public class Context {
   /**
    * Transitions the object if the target class is registered. Throws an exception if its not.
    *
+   * @param <T>          type of object.
    * @param targetObject to transition.
    * @param transition   the transition.
-   * @param <T>          type of object.
    */
   public <T> void transition(final T targetObject, final String transition) {
     log.debug("[{}] transition({},{})", id, targetObject, transition);
@@ -189,8 +198,9 @@ public class Context {
    * Transitions the object to the next state if there is a next state. It will throw an exception if the
    * state machine has multiple transitions available.
    *
-   * @param targetObject to transition.
    * @param <T>          type of object.
+   * @param targetObject to transition.
+   * @return the boolean
    */
   public <T> boolean nextState(final T targetObject) {
     log.debug("[{}] nextState({})", id, targetObject);
@@ -211,9 +221,9 @@ public class Context {
   /**
    * Checks to see if this object can transition to the next state.
    *
+   * @param <T>          type of object.
    * @param targetObject to transition.
    * @param transition   transition we are checking for.
-   * @param <T>          type of object.
    * @return boolean if we can.
    */
   public <T> boolean canTransition(final T targetObject, final String transition) {
@@ -225,8 +235,8 @@ public class Context {
   /**
    * Returns available transitions for the object if the object's class is registered.
    *
-   * @param targetObject that which we want the transitions for.
    * @param <T>          type.
+   * @param targetObject that which we want the transitions for.
    * @return a set.
    */
   public <T> Set<String> transitions(final T targetObject) {
@@ -251,8 +261,8 @@ public class Context {
    * Sets the initial state on the target object based on the registered statemachine. It ignores the current
    * state. If the state machine does not define an initial state, this will throw an exception.
    *
-   * @param target that will have its state changed.
    * @param <T>    type of object.
+   * @param target that will have its state changed.
    */
   public <T> void setInitialState(final T target) {
     log.debug("[{}] setInitialState({})", id, target.getClass().getCanonicalName());
@@ -266,8 +276,8 @@ public class Context {
   /**
    * Returns the state machine for the target class.
    *
-   * @param targetClass which we hold the state machine for.
    * @param <T>         type of object.
+   * @param targetClass which we hold the state machine for.
    * @return an optional state machine.
    */
   public <T> Optional<StateMachine> getStateMachineForClass(final Class<T> targetClass) {
@@ -279,8 +289,8 @@ public class Context {
   /**
    * Returns the state machine for the target object's class.
    *
-   * @param target which we hold the state machine for.
    * @param <T>    type of object.
+   * @param target which we hold the state machine for.
    * @return an optional state machine.
    */
   public <T> Optional<StateMachine> getStateMachine(final T target) {

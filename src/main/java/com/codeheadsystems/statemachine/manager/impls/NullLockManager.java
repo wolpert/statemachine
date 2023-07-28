@@ -21,9 +21,15 @@ import com.codeheadsystems.statemachine.model.StateMachine;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * The type Null lock manager.
+ */
 @Singleton
 public class NullLockManager implements LockManager {
 
+  /**
+   * Instantiates a new Null lock manager.
+   */
   @Inject
   public NullLockManager() {
 

@@ -27,8 +27,7 @@ public interface MetricManager {
    * This is effectively a 'rate'. Number/interval.
    *
    * @param metricName to use.
-   * @param value      a value. Note, having a zero here is useful for cases
-   *                   like error rates to indicate no value.
+   * @param value      a value. Note, having a zero here is useful for cases                   like error rates to indicate no value.
    */
   void meter(String metricName, long value);
 
@@ -49,9 +48,9 @@ public interface MetricManager {
   /**
    * Latency of a given method. Note this should include counts too.
    *
+   * @param <R>        return type.
    * @param metricName to use.
    * @param supplier   to execute.
-   * @param <R>        return type.
    * @return the value from the method.
    */
   <R> R time(String metricName, Supplier<R> supplier);

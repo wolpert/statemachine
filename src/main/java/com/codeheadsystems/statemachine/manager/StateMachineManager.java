@@ -45,6 +45,12 @@ public class StateMachineManager {
   private final StateMachineFactory factory;
   private final ObjectMapper objectMapper;
 
+  /**
+   * Instantiates a new State machine manager.
+   *
+   * @param factory      the factory
+   * @param objectMapper the object mapper
+   */
   @Inject
   public StateMachineManager(final StateMachineFactory factory,
                              final ObjectMapper objectMapper) {
@@ -56,6 +62,13 @@ public class StateMachineManager {
     }
   }
 
+  /**
+   * Generate from annotation optional.
+   *
+   * @param <T>         the type parameter
+   * @param targetClass the target class
+   * @return the optional
+   */
   public <T> Optional<StateMachine> generateFromAnnotation(final Class<T> targetClass) {
     final StateMachineTarget target = targetClass.getAnnotation(StateMachineTarget.class);
     if (target == null) {
@@ -94,6 +107,12 @@ public class StateMachineManager {
     return validateAndReId(getStateMachine(inputStream));
   }
 
+  /**
+   * Generate state machine.
+   *
+   * @param json the json
+   * @return the state machine
+   */
   public StateMachine generate(final String json) {
     log.debug("generate({})", json);
     return validateAndReId(getStateMachine(json));

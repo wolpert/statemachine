@@ -33,11 +33,11 @@ public class Functional {
   /**
    * Immutable map helper.... adds the key/value to the immutable map.
    *
+   * @param <K>   key type.
+   * @param <V>   value type.
    * @param map   we are starting with
    * @param key   of the entry.
    * @param value of the entry.
-   * @param <K>   key type.
-   * @param <V>   value type.
    * @return new map with the augmented entries.
    */
   public static <K, V> Map<K, V> add(final Map<K, V> map, final K key, final V value) {
@@ -50,6 +50,14 @@ public class Functional {
     }
   }
 
+  /**
+   * Is boolean.
+   *
+   * @param <T>       the type parameter
+   * @param optionalT the optional t
+   * @param value     the value
+   * @return the boolean
+   */
   public static <T> boolean is(final Optional<T> optionalT, final T value) {
     if (!optionalT.isPresent() || value == null) {
       return false;

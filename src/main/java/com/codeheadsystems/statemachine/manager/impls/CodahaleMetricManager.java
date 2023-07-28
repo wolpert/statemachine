@@ -26,11 +26,19 @@ import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * The type Codahale metric manager.
+ */
 @Singleton
 public class CodahaleMetricManager implements MetricManager {
 
   private final MetricRegistry metricRegistry;
 
+  /**
+   * Instantiates a new Codahale metric manager.
+   *
+   * @param metricRegistry the metric registry
+   */
   @Inject
   public CodahaleMetricManager(final MetricRegistry metricRegistry) {
     this.metricRegistry = metricRegistry;

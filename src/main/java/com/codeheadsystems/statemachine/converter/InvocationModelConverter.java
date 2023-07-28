@@ -44,6 +44,12 @@ public class InvocationModelConverter {
   private final Set<PendingTransition> globalPendingTransitions;
   private final Set<PostTransition> globalPostTransitions;
 
+  /**
+   * Instantiates a new Invocation model converter.
+   *
+   * @param globalPendingTransitions the global pending transitions
+   * @param globalPostTransitions    the global post transitions
+   */
   @Inject
   public InvocationModelConverter(@Named("PendingTransition") final Set<PendingTransition> globalPendingTransitions,
                                   @Named("PostTransition") final Set<PostTransition> globalPostTransitions) {
@@ -56,8 +62,8 @@ public class InvocationModelConverter {
    * Generates an invocation model for the given class. Must use the default getState()/setState() pattern
    * or use annotations.
    *
-   * @param targetClass class we use.
    * @param <T>         type for return.
+   * @param targetClass class we use.
    * @return a usable model.
    */
   public <T> InvocationModel<T> generate(final Class<T> targetClass) {
@@ -84,9 +90,9 @@ public class InvocationModelConverter {
   /**
    * Generates an invocation model for a given class. Must follow the bean access pattern.
    *
+   * @param <T>          type of the class.
    * @param targetClass  Class we use.
    * @param propertyName name of the property.
-   * @param <T>          type of the class.
    * @return a usable model.
    */
   public <T> InvocationModel<T> generate(final Class<T> targetClass,
@@ -99,9 +105,11 @@ public class InvocationModelConverter {
   /**
    * Generates an invocation model for a given class. Must follow the bean access pattern.
    *
-   * @param targetClass  Class we use.
-   * @param propertyName name of the property.
-   * @param <T>          type of the class.
+   * @param <T>           type of the class.
+   * @param targetClass   Class we use.
+   * @param propertyName  name of the property.
+   * @param getMethodName the get method name
+   * @param setMethodName the set method name
    * @return a usable model.
    */
   public <T> InvocationModel<T> generate(final Class<T> targetClass,
@@ -114,6 +122,16 @@ public class InvocationModelConverter {
         getMethod(targetClass, setMethodName, String.class));
   }
 
+  /**
+   * Generate invocation model.
+   *
+   * @param <T>          the type parameter
+   * @param targetClass  the target class
+   * @param propertyName the property name
+   * @param getMethod    the get method
+   * @param setMethod    the set method
+   * @return the invocation model
+   */
   public <T> InvocationModel<T> generate(final Class<T> targetClass,
                                          final String propertyName,
                                          final Method getMethod,

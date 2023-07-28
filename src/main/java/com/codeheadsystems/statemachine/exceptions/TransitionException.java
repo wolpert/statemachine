@@ -18,8 +18,17 @@ package com.codeheadsystems.statemachine.exceptions;
 
 import com.codeheadsystems.statemachine.model.StateMachine;
 
+/**
+ * The type Transition exception.
+ */
 public class TransitionException extends StateMachineException {
 
+  /**
+   * Instantiates a new Transition exception.
+   *
+   * @param stateMachine the state machine
+   * @param message      the message
+   */
   public TransitionException(final StateMachine stateMachine, final String message) {
     super(stateMachine, message);
   }

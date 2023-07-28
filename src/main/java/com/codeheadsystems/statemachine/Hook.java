@@ -16,15 +16,38 @@
 
 package com.codeheadsystems.statemachine;
 
+/**
+ * The interface Hook.
+ */
 public interface Hook {
 
+  /**
+   * The interface Pending transition.
+   */
   @FunctionalInterface
   interface PendingTransition {
+    /**
+     * Transition.
+     *
+     * @param <T>            the type parameter
+     * @param object         the object
+     * @param transitionName the transition name
+     */
     <T> void transition(T object, String transitionName);
   }
 
+  /**
+   * The interface Post transition.
+   */
   @FunctionalInterface
   interface PostTransition {
+    /**
+     * Transition.
+     *
+     * @param <T>            the type parameter
+     * @param object         the object
+     * @param transitionName the transition name
+     */
     <T> void transition(T object, String transitionName);
   }
 }
