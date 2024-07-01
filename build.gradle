@@ -1,17 +1,6 @@
 /*
  * Copyright (c) 2020 CodeHead Systems. All rights reserved
  */
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://plugins.gradle.org/m2/" }
-        maven { url "https://maven.google.com" } // Google's Maven repository
-        gradlePluginPortal() // was jcenter() which is dying
-        google()
-    }
-}
 
 plugins {
     id 'java-library'
@@ -25,15 +14,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
     withJavadocJar()
     withSourcesJar()
-}
-repositories {
-    mavenLocal()
-    mavenCentral()
-    gradlePluginPortal()  // was jcenter() which is dying
-    google()
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-    maven { url "https://s3-us-west-2.amazonaws.com/dynamodb-local/release/" }
 }
 group 'com.codeheadsystems'
 version '1.0.1-SNAPSHOT'
