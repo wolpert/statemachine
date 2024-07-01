@@ -11,10 +11,6 @@ buildscript {
         gradlePluginPortal() // was jcenter() which is dying
         google()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.5.0'
-        classpath 'org.gretty:gretty:4.1.4'
-    }
 }
 
 plugins {
