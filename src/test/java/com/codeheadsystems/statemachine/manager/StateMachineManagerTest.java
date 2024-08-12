@@ -29,10 +29,10 @@ import com.codeheadsystems.statemachine.model.StateMachine;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.google.common.collect.ImmutableSet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,7 +73,7 @@ class StateMachineManagerTest {
 
   @BeforeEach
   void setUp() {
-    when(mapper.getRegisteredModuleIds()).thenReturn(ImmutableSet.of(Jdk8Module.class.getCanonicalName()));
+    when(mapper.getRegisteredModuleIds()).thenReturn(Set.of(Jdk8Module.class.getCanonicalName()));
     this.manager = new StateMachineManager(stateMachineFactory, mapper);
   }
 

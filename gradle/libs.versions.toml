@@ -6,7 +6,6 @@ assertj = "3.26.3"
 codehead-test = "1.0.9"
 commons-io = "2.16.1"
 dagger = "2.52"
-guava = "33.2.1-jre"
 immutables = '2.10.1'
 jackson = '2.17.2'
 junit-jupiter = "5.10.3"
@@ -21,7 +20,6 @@ codehead-test = { module = "com.codeheadsystems:codehead-test", version.ref = "c
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
 immutables-value = { module = "org.immutables:value", version.ref = "immutables" }
 immutables-annotations = { module = "org.immutables:value-annotations", version.ref = "immutables" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }

@@ -31,7 +31,6 @@ import com.codeheadsystems.statemachine.manager.TransitionManager;
 import com.codeheadsystems.statemachine.model.ActiveStateMachine;
 import com.codeheadsystems.statemachine.model.InvocationModel;
 import com.codeheadsystems.statemachine.model.StateMachine;
-import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
@@ -156,7 +155,7 @@ class ContextTest extends BaseMetricTest {
   void nextState_noTransition() {
     setupRegistration();
     when(transitionManager.transitions(activeStateMachineArgumentCaptor.capture(), eq(TARGET)))
-        .thenReturn(ImmutableSet.of());
+        .thenReturn(Set.of());
 
     final boolean result = context.nextState(TARGET);
 
@@ -170,7 +169,7 @@ class ContextTest extends BaseMetricTest {
   void nextState_oneTransition() {
     setupRegistration();
     when(transitionManager.transitions(activeStateMachineArgumentCaptor.capture(), eq(TARGET)))
-        .thenReturn(ImmutableSet.of(TRANSITION));
+        .thenReturn(Set.of(TRANSITION));
 
     final boolean result = context.nextState(TARGET);
 
@@ -186,7 +185,7 @@ class ContextTest extends BaseMetricTest {
   void nextState_twoTransition() {
     setupRegistration();
     when(transitionManager.transitions(activeStateMachineArgumentCaptor.capture(), eq(TARGET)))
-        .thenReturn(ImmutableSet.of("t1", "t2"));
+        .thenReturn(Set.of("t1", "t2"));
 
     assertThatExceptionOfType(StateMachineException.class)
         .isThrownBy(() -> context.nextState(TARGET));

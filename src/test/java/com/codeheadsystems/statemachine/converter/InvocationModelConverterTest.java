@@ -23,7 +23,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.codeheadsystems.statemachine.annotation.StateTarget;
 import com.codeheadsystems.statemachine.model.InvocationModel;
-import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,8 +42,8 @@ class InvocationModelConverterTest {
 
   @BeforeEach
   void setUp() {
-    pendingTransitionSet = ImmutableSet.of(pendingTransition);
-    postTransitionSet = ImmutableSet.of(postTransition);
+    pendingTransitionSet = Set.of(pendingTransition);
+    postTransitionSet = Set.of(postTransition);
     converter = new InvocationModelConverter(pendingTransitionSet, postTransitionSet);
   }
 

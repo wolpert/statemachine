@@ -16,7 +16,6 @@
 
 package com.codeheadsystems.statemachine.util;
 
-import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -44,9 +43,11 @@ public class Functional {
     if (map.containsKey(key)) {
       final Map<K, V> growingMap = new HashMap<>(map);
       growingMap.put(key, value);
-      return ImmutableMap.copyOf(growingMap);
+      return Map.copyOf(growingMap);
     } else {
-      return ImmutableMap.<K, V>builder().putAll(map).put(key, value).build();
+      final Map<K, V> result = new HashMap<>(map);
+      result.put(key, value);
+      return Map.copyOf(result); // immutable
     }
   }
 

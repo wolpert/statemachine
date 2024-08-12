@@ -24,10 +24,10 @@ import com.codeheadsystems.statemachine.manager.impls.CodahaleMetricManager;
 import com.codeheadsystems.statemachine.manager.impls.NullLockManager;
 import com.codeheadsystems.statemachine.manager.impls.NullMetricManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ImmutableSet;
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
+import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -41,8 +41,8 @@ import org.slf4j.LoggerFactory;
 public class ContextBuilder {
 
   private static final Logger log = LoggerFactory.getLogger(ContextBuilder.class);
-  private final ImmutableSet.Builder<Hook.PendingTransition> pendingTransitionsBuilder = ImmutableSet.builder();
-  private final ImmutableSet.Builder<Hook.PostTransition> postTransitionsBuilder = ImmutableSet.builder();
+  private final HashSet<Hook.PendingTransition> pendingTransitionsBuilder = new HashSet<>();
+  private final HashSet<Hook.PostTransition> postTransitionsBuilder = new HashSet<>();
   private MetricRegistry metricRegistry;
   private MetricManager metricManager;
   private LockManager lockManager;
@@ -114,8 +114,8 @@ public class ContextBuilder {
         .stateMachineModules(new StateMachineModules(
             resolvedMetricManager,
             lockManager,
-            pendingTransitionsBuilder.build(),
-            postTransitionsBuilder.build()))
+            pendingTransitionsBuilder,
+            postTransitionsBuilder))
         .build();
     return component.context();
   }

@@ -29,7 +29,7 @@ import com.codeheadsystems.statemachine.model.ImmutableStateMachine;
 import com.codeheadsystems.statemachine.model.ImmutableTransition;
 import com.codeheadsystems.statemachine.model.InvocationModel;
 import com.codeheadsystems.statemachine.model.StateMachine;
-import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +61,7 @@ class TransitionManagerFunctionalTest extends BaseMetricTest {
   void setUp() {
     hookStruct = new HookStruct();
     lockManager = new NullLockManager();
-    converter = new InvocationModelConverter(ImmutableSet.of(hookStruct::preTrans), ImmutableSet.of(hookStruct::postTrans));
+    converter = new InvocationModelConverter(Set.of(hookStruct::preTrans), Set.of(hookStruct::postTrans));
     transitionManager = new TransitionManager(
         new InvocationManager(metricManager),
         metricManager, lockManager);

@@ -26,7 +26,7 @@ import com.codeheadsystems.statemachine.model.ImmutableTransition;
 import com.codeheadsystems.statemachine.model.State;
 import com.codeheadsystems.statemachine.model.StateMachine;
 import com.codeheadsystems.statemachine.model.Transition;
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -126,12 +126,12 @@ class StateMachineFactoryTest {
   @Test
   void addTransition_withBothState_withTransition() {
     final State fromState = ImmutableState.copyOf(STATE_FROM)
-        .withTransitions(ImmutableMap.of(TRANSITION.name(), TRANSITION));
+        .withTransitions(Map.of(TRANSITION.name(), TRANSITION));
     assertThat(fromState.hasTransition(TRANSITION)).isTrue();
     assertThat(fromState.hasTransition(TRANSITION.name())).isTrue();
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(fromState.name(), fromState, STATE_TO.name(), STATE_TO));
+        .withStates(Map.of(fromState.name(), fromState, STATE_TO.name(), STATE_TO));
 
     final StateMachine result = factory.addTransition(stateMachine, fromState, TRANSITION);
 
@@ -151,12 +151,12 @@ class StateMachineFactoryTest {
   @Test
   void addTransitionString_withBothState_withTransition() {
     final State fromState = ImmutableState.copyOf(STATE_FROM)
-        .withTransitions(ImmutableMap.of(TRANSITION.name(), TRANSITION));
+        .withTransitions(Map.of(TRANSITION.name(), TRANSITION));
     assertThat(fromState.hasTransition(TRANSITION)).isTrue();
     assertThat(fromState.hasTransition(TRANSITION.name())).isTrue();
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(fromState.name(), fromState, STATE_TO.name(), STATE_TO));
+        .withStates(Map.of(fromState.name(), fromState, STATE_TO.name(), STATE_TO));
 
     final StateMachine result = factory.addTransition(stateMachine, STATE_FROM.name(), TRANSITION.name(), STATE_TO.name());
 
@@ -177,7 +177,7 @@ class StateMachineFactoryTest {
   void addTransition_withBothState_noTransition() {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(
+        .withStates(Map.of(
             STATE_FROM.name(), STATE_FROM,
             STATE_TO.name(), STATE_TO));
 
@@ -200,7 +200,7 @@ class StateMachineFactoryTest {
   void addTransitionString_withBothState_noTransition() {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(
+        .withStates(Map.of(
             STATE_FROM.name(), STATE_FROM,
             STATE_TO.name(), STATE_TO));
 
@@ -241,7 +241,7 @@ class StateMachineFactoryTest {
   void addInitialState_withState() {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(STATE_FROM.name(), STATE_FROM));
+        .withStates(Map.of(STATE_FROM.name(), STATE_FROM));
 
     final StateMachine result = factory.addInitialState(stateMachine, STATE_FROM.name());
 
@@ -262,7 +262,7 @@ class StateMachineFactoryTest {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
         .withInitialState(STATE_FROM.name())
-        .withStates(ImmutableMap.of(STATE_FROM.name(), STATE_FROM));
+        .withStates(Map.of(STATE_FROM.name(), STATE_FROM));
 
     final StateMachine result = factory.addInitialState(stateMachine, STATE_FROM.name());
 
@@ -329,7 +329,7 @@ class StateMachineFactoryTest {
   void addState_existing() {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(STATE_FROM.name(), STATE_FROM));
+        .withStates(Map.of(STATE_FROM.name(), STATE_FROM));
 
     final StateMachine result = factory.addState(stateMachine, STATE_FROM);
 
@@ -358,7 +358,7 @@ class StateMachineFactoryTest {
   void addState_string_existing() {
     final StateMachine stateMachine = ImmutableStateMachine.copyOf(
             factory.generateStateMachine(NAME))
-        .withStates(ImmutableMap.of(STATE_FROM.name(), STATE_FROM));
+        .withStates(Map.of(STATE_FROM.name(), STATE_FROM));
 
     final StateMachine result = factory.addState(stateMachine, STATE_FROM.name());
 

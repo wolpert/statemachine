@@ -31,7 +31,7 @@ import com.codeheadsystems.statemachine.model.ImmutableStateMachine;
 import com.codeheadsystems.statemachine.model.ImmutableTransition;
 import com.codeheadsystems.statemachine.model.InvocationModel;
 import com.codeheadsystems.statemachine.model.StateMachine;
-import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -131,8 +131,8 @@ class TransitionManagerTest extends BaseMetricTest {
   void transition() {
     final SampleClass object = new SampleClass(FIRST_STATE);
     when(invocationManager.get(model, object)).thenReturn(FIRST_STATE);
-    when(model.pendingTransitionHooks()).thenReturn(ImmutableSet.of(pendingTransition));
-    when(model.postTransitionHooks()).thenReturn(ImmutableSet.of(postTransition));
+    when(model.pendingTransitionHooks()).thenReturn(Set.of(pendingTransition));
+    when(model.postTransitionHooks()).thenReturn(Set.of(postTransition));
 
     final SampleClass result = transitionManager.transition(MACHINE, model, object, TRANSITION);
 

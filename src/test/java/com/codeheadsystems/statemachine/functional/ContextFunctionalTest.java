@@ -25,7 +25,7 @@ import com.codeheadsystems.statemachine.annotation.StateMachineTarget;
 import com.codeheadsystems.statemachine.exceptions.TransitionException;
 import com.codeheadsystems.statemachine.manager.LockManager;
 import com.codeheadsystems.statemachine.manager.MetricManager;
-import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -55,8 +55,8 @@ public class ContextFunctionalTest extends BaseMetricTest {
     context = Context.builder()
         .lockManager(lockManager)
         .metricManager(metricManager)
-        .pendingTransitions(ImmutableSet.of())
-        .postTransitions(ImmutableSet.of())
+        .pendingTransitions(Set.of())
+        .postTransitions(Set.of())
         .build();
   }
 
