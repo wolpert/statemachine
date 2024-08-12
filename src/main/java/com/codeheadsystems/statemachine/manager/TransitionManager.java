@@ -59,6 +59,25 @@ public class TransitionManager {
   }
 
   /**
+   * This method isolates the state change request. This allows for various locking techniques.
+   *
+   * @param stateMachine   that owns the transition.
+   * @param transitionName that we are going to call
+   * @param model          that descriptions how to execute the request.
+   * @param object         that has the state.
+   * @param <T>            type of object so we can return it back.
+   */
+  private <T> void stateChange(final StateMachine stateMachine, final InvocationModel<T> model, final T object, final String transitionName) {
+    metricManager.time(name(TransitionManager.class, "stateChange", stateMachine.name(), transitionName), () -> {
+      final String currentState = invocationManager.get(model, object);
+      final String nextStateName = stateMachine.nextState(currentState, transitionName)
+          .orElseThrow(() -> new TransitionException(stateMachine, String.format("Invalid Transition Request :%s:%s", currentState, transitionName)));
+      invocationManager.set(model, object, nextStateName);
+      log.info("[{}] {}({})/{} {}->{}", stateMachine.identifier(), object.getClass().getSimpleName(), object, transitionName, currentState, nextStateName);
+    });
+  }
+
+  /**
    * Transitions the state of the object. This method will handle the pre and post states for the transition
    * as they come up.
    *
@@ -79,25 +98,6 @@ public class TransitionManager {
       lockManager.transitionUnderLock(stateMachine, object, () -> stateChange(stateMachine, model, object, transitionName));
       model.postTransitionHooks().forEach(h -> h.transition(object, transitionName));
       return object;
-    });
-  }
-
-  /**
-   * This method isolates the state change request. This allows for various locking techniques.
-   *
-   * @param stateMachine   that owns the transition.
-   * @param transitionName that we are going to call
-   * @param model          that descriptions how to execute the request.
-   * @param object         that has the state.
-   * @param <T>            type of object so we can return it back.
-   */
-  private <T> void stateChange(final StateMachine stateMachine, final InvocationModel<T> model, final T object, final String transitionName) {
-    metricManager.time(name(TransitionManager.class, "stateChange", stateMachine.name(), transitionName), () -> {
-      final String currentState = invocationManager.get(model, object);
-      final String nextStateName = stateMachine.nextState(currentState, transitionName)
-          .orElseThrow(() -> new TransitionException(stateMachine, String.format("Invalid Transition Request :%s:%s", currentState, transitionName)));
-      invocationManager.set(model, object, nextStateName);
-      log.info("[{}] {}({})/{} {}->{}", stateMachine.identifier(), object.getClass().getSimpleName(), object, transitionName, currentState, nextStateName);
     });
   }
 

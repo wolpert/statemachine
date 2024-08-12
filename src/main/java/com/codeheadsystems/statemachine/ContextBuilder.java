@@ -36,7 +36,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Builder for the Context.
- * <p>
  * Uses Dagger as the IOC framework, so no runtime cost for consumers of the StateMachine context.
  */
 public class ContextBuilder {
@@ -71,7 +70,7 @@ public class ContextBuilder {
   }
 
   /**
-   * Add in your own lock manager
+   * Add in your own lock manager.
    *
    * @param lockManager to use.
    * @return builder. context builder

@@ -33,7 +33,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Used to create instances of the state machine model, and validation.
- * <p>
  * Naming nit: This is more of a builder but not from the traditional sense of a builder pattern.
  * Calling it a factory until someone comes up with a better name.
  */

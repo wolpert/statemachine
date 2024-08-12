@@ -40,9 +40,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Purpose: Runtime context for available state machines.
- * <p>
  * How to use:
- * <p>
  * Context.builder().build();
  */
 @Singleton
@@ -328,8 +326,8 @@ public class Context {
         final ActiveStateMachine<T> result = (ActiveStateMachine<T>) activeStateMachine;
         return Optional.of(result);
       } else {
-        throw new IllegalStateException("Bug found! Please file a ticket. Invalid active machine found for " +
-            targetClass.getCanonicalName() + ":" + activeStateMachine.stateMachine().identifier());
+        throw new IllegalStateException("Bug found! Please file a ticket. Invalid active machine found for "
+            + targetClass.getCanonicalName() + ":" + activeStateMachine.stateMachine().identifier());
       }
     }
   }

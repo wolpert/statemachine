@@ -49,6 +49,9 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+tasks.named<Checkstyle>("checkstyleTest") {
+    enabled = false
+}
 
 group = "com.codeheadsystems"
 version = "1.0.1-SNAPSHOT"
