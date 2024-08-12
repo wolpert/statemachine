@@ -90,7 +90,8 @@ public class Context {
           final InvocationManager invocationManager,
           final MetricManager metricManager) {
     id = UUID.randomUUID().toString();
-    log.info("[{}] Context({},{},{},{},{})", id, stateMachineManager, transitionManager, invocationModelConverter, invocationManager, metricManager);
+    log.info("[{}] Context({},{},{},{},{})",
+        id, stateMachineManager, transitionManager, invocationModelConverter, invocationManager, metricManager);
     this.stateMachineManager = stateMachineManager;
     this.transitionManager = transitionManager;
     this.invocationModelConverter = invocationModelConverter;
@@ -328,8 +329,7 @@ public class Context {
         return Optional.of(result);
       } else {
         throw new IllegalStateException("Bug found! Please file a ticket. Invalid active machine found for " +
-            targetClass.getCanonicalName() + ":" +
-            activeStateMachine.stateMachine().identifier());
+            targetClass.getCanonicalName() + ":" + activeStateMachine.stateMachine().identifier());
       }
     }
   }

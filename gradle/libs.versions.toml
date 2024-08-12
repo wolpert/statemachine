@@ -28,6 +28,7 @@ jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
@@ -37,3 +38,6 @@ metrics-core = { module = "io.dropwizard.metrics:metrics-core", version.ref = "m
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mokito" }
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mokito" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+[bundles]
+testing = ["mockito-core", "mockito-junit-jupiter", "assertj", "junit-jupiter", "junit-jupiter-api", "junit-jupiter-engine", "junit-jupiter-params"]

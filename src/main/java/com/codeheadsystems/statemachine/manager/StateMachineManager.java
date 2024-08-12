@@ -120,7 +120,7 @@ public class StateMachineManager {
 
   private StateMachine validateAndReId(StateMachine stateMachine) {
     if (!factory.isValid(stateMachine)) {
-      throw new StateMachineException(stateMachine, "State Machine is not valid:" + stateMachine.toString());
+      throw new StateMachineException(stateMachine, "State Machine is not valid:" + stateMachine);
     }
     return ImmutableStateMachine.copyOf(stateMachine)
         .withId(UUID.randomUUID().toString());

@@ -58,20 +58,6 @@ public class InvocationModelConverter {
     log.debug("InvocationModelConverter");
   }
 
-  /**
-   * Generates an invocation model for the given class. Must use the default getState()/setState() pattern
-   * or use annotations.
-   *
-   * @param <T>         type for return.
-   * @param targetClass class we use.
-   * @return a usable model.
-   */
-  public <T> InvocationModel<T> generate(final Class<T> targetClass) {
-    log.debug("generate({})", targetClass);
-    return generateFromField(targetClass)
-        .orElseGet(() -> generate(targetClass, "state"));
-  }
-
   // TODO alow for the field name to be set from the annotation. Requires handling the getter/setter based on
   // the field instead of the annotation.
   private <T> Optional<InvocationModel<T>> generateFromField(final Class<T> targetClass) {
@@ -85,6 +71,20 @@ public class InvocationModelConverter {
   private boolean isAnnotationPresent(final Field field) {
     field.setAccessible(true);
     return field.isAnnotationPresent(StateTarget.class);
+  }
+
+  /**
+   * Generates an invocation model for the given class. Must use the default getState()/setState() pattern
+   * or use annotations.
+   *
+   * @param <T>         type for return.
+   * @param targetClass class we use.
+   * @return a usable model.
+   */
+  public <T> InvocationModel<T> generate(final Class<T> targetClass) {
+    log.debug("generate({})", targetClass);
+    return generateFromField(targetClass)
+        .orElseGet(() -> generate(targetClass, "state"));
   }
 
   /**
