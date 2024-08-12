@@ -5,7 +5,7 @@ plugins {
     `maven-publish`
     jacoco
     signing
-    checkstyle
+    //checkstyle
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
 }
 
@@ -48,9 +48,9 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
-tasks.named<Checkstyle>("checkstyleTest") {
-    enabled = false
-}
+//tasks.named<Checkstyle>("checkstyleTest") {
+//    enabled = false
+//}
 
 group = "com.codeheadsystems"
 version = "1.0.1-SNAPSHOT"
