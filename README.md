@@ -121,3 +121,18 @@ pluggable locking model is in rework as well.
 State changes on objects are typically not thread-safe. Depending on the use of
 the pluggable locking mechanism in-play, you can make them thread safe. But be
 aware, der be dragons here...
+
+# The refactor
+
+## Objective
+
+The 1.0 version tries to do too much. In reality it needs the following:
+
+1. Identify states.
+2. Identify transitions.
+3. Attach methods to 'enter state', 'exit state' and create a way to 'execute for state'
+4. Does not need to attach directly to an object. Let that be an addone.
+
+## State Machine Revised
+
+I will create a new project to replace this one.
