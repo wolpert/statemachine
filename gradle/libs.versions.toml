@@ -5,7 +5,7 @@
 assertj = "3.26.3"
 codehead-test = "1.0.11"
 commons-io = "2.18.0"
-dagger = "2.52"
+dagger = "2.53"
 immutables = '2.10.1'
 jackson = '2.18.2'
 junit-jupiter = "5.11.3"
