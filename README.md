@@ -1,5 +1,10 @@
 # State Machine
 
+## DEPRECATED
+
+This project is no longer being updated. Instead please use
+[State Machine Redux](https://github.com/wolpert/libraries/tree/main/smr)
+
 ## Purpose
 
 Provide a general purpose state machine with transition support. State machines
