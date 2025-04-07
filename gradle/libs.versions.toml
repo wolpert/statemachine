@@ -11,7 +11,7 @@ jackson = '2.18.3'
 junit-jupiter = "5.12.1"
 logback = '1.5.18'
 metrics = '4.2.30'
-mokito = '5.16.1'
+mokito = '5.17.0'
 slf4j = '2.0.17'
 
 [libraries]
