@@ -4,11 +4,11 @@
 [versions]
 assertj = "3.27.3"
 codehead-test = "3.0.2"
-commons-io = "2.18.0"
+commons-io = "2.19.0"
 dagger = "2.56.1"
 immutables = '2.10.1'
 jackson = '2.18.3'
-junit-jupiter = "5.12.1"
+junit-jupiter = "5.12.2"
 logback = '1.5.18'
 metrics = '4.2.30'
 mokito = '5.17.0'
