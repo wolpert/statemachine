@@ -5,12 +5,12 @@
 assertj = "3.27.4"
 codehead-test = "3.0.4"
 commons-io = "2.20.0"
-dagger = "2.57"
+dagger = "2.57.1"
 immutables = '2.11.3'
 jackson = '2.19.2'
 junit-jupiter = "5.13.4"
 logback = '1.5.18'
-metrics = '4.2.33'
+metrics = '4.2.34'
 mokito = '5.19.0'
 slf4j = '2.0.17'
 
