@@ -8,6 +8,7 @@ commons-io = "2.20.0"
 dagger = "2.57.1"
 immutables = '2.11.3'
 jackson = '2.20.0'
+jackson_annotations = '2.20'
 junit-jupiter = "5.13.4"
 logback = '1.5.18'
 metrics = '4.2.36'
@@ -24,7 +25,7 @@ immutables-value = { module = "org.immutables:value", version.ref = "immutables"
 immutables-annotations = { module = "org.immutables:value-annotations", version.ref = "immutables" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
-jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson_annotations" }
 jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
