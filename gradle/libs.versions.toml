@@ -2,7 +2,7 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-assertj = "3.27.4"
+assertj = "3.27.5"
 codehead-test = "3.0.5"
 commons-io = "2.20.0"
 dagger = "2.57.1"
@@ -11,8 +11,8 @@ jackson = '2.20.0'
 jackson_annotations = '2.20'
 junit-jupiter = "5.13.4"
 logback = '1.5.18'
-metrics = '4.2.36'
-mokito = '5.19.0'
+metrics = '4.2.37'
+mokito = '5.20.0'
 slf4j = '2.0.17'
 
 [libraries]
