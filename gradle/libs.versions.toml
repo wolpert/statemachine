@@ -5,9 +5,9 @@
 assertj = "3.27.7"
 codehead-test = "3.0.5"
 commons-io = "2.21.0"
-dagger = "2.59.1"
+dagger = "2.59.2"
 immutables = '2.12.1'
-jackson = '2.21.0'
+jackson = '2.21.1'
 jackson_annotations = '2.21'
 junit-jupiter = "6.0.3"
 logback = '1.5.32'
