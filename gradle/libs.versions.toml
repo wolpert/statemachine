@@ -4,7 +4,7 @@
 [versions]
 assertj = "3.27.7"
 codehead-test = "3.1.0"
-commons-io = "2.21.0"
+commons-io = "2.22.0"
 dagger = "2.59.2"
 immutables = '2.12.1'
 jackson = '2.21.2'
