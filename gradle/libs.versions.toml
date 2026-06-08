@@ -3,11 +3,11 @@
 
 [versions]
 assertj = "3.27.7"
-codehead-test = "3.1.0"
+codehead-test = "3.1.1"
 commons-io = "2.22.0"
 dagger = "2.59.2"
 immutables = '2.12.2'
-jackson = '2.21.4'
+jackson = '2.22.0'
 jackson_annotations = '2.22'
 junit-jupiter = "6.1.0"
 logback = '1.5.34'
